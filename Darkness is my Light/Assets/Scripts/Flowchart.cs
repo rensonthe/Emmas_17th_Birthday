@@ -13,6 +13,11 @@ public class Flowchart : MonoBehaviour {
 
     public bool awaken = false;
     public bool bedroomGetUp = false;
+    public bool bedroomLightsOn = false;
+    public bool pickupGlasses = false;
+    public bool bathroomWashUp = false;
+    public bool bottleTaken = false;
+    public bool exitBedroom = false;
 
     // Use this for initialization
     void Start () {

@@ -34,7 +34,7 @@ public class UIManager : MonoBehaviour {
         SceneManager.LoadScene("wake_wall");
     }
 
-    IEnumerator Fading()
+    public IEnumerator Fading()
     {
         animator.SetBool("Fade", true);
         yield return new WaitUntil(() => fadeImage.color.a == 1);

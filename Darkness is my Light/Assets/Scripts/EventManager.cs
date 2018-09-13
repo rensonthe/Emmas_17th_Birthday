@@ -8,6 +8,8 @@ namespace UnityStandardAssets.ImageEffects
 {
     public class EventManager : PostEffectsBase
     {
+        public bool awakenEyes;
+        public bool bedroomNight;
         public GameObject dialog;
         public GameObject[] eyes;
         bool awakenTrigger = false;
@@ -21,7 +23,14 @@ namespace UnityStandardAssets.ImageEffects
         // Use this for initialization
         void Start()
         {
-            eyes[0].gameObject.SetActive(true);
+            if (bedroomNight)
+            {
+                dialog.gameObject.SetActive(true);
+            }
+            if (awakenEyes)
+            {
+                eyes[0].gameObject.SetActive(true);
+            }
             blur = GetComponent<BlurOptimized>();
         }
 
@@ -55,7 +64,7 @@ namespace UnityStandardAssets.ImageEffects
 
         IEnumerator ChangeBool()
         {
-            yield return new WaitForSeconds(8);
+            yield return new WaitForSeconds(9);
             Flowchart.Instance.awaken = true;
             StopCoroutine("ChangeBool");
         }
