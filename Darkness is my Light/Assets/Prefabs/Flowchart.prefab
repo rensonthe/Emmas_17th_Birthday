@@ -53,3 +53,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   awaken: 0
   bedroomGetUp: 0
+  bedroomLightsOn: 0
+  pickupGlasses: 0
+  bathroomWashUp: 0
+  bottleTaken: 0
+  exitBedroom: 0

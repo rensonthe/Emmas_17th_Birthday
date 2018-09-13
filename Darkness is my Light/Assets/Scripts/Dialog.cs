@@ -5,15 +5,24 @@ using UnityEngine;
 
 public class Dialog : MonoBehaviour {
 
+    public static Dialog Instance { get; set; }
+
     public TextMeshProUGUI textDisplay;
     public string[] sentences;
     private int index;
     public float typingSpeed;
     public bool solo;
     public bool noAnim;
+    public bool auto;
+    public bool finished = false;
 
     public GameObject continueButton;
     public Animator textDisplayAnim;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
@@ -22,15 +31,24 @@ public class Dialog : MonoBehaviour {
 
     void Update()
     {
+        FinishSentece();
+    }
+
+    void FinishSentece()
+    {
         if (textDisplay.text == sentences[index])
         {
             if (!noAnim)
             {
                 textDisplayAnim.SetTrigger("Fadeout");
             }
-            if (!solo)
+            if (!solo && !finished)
             {
-                continueButton.SetActive(true);
+                if (auto == false)
+                {
+                    continueButton.SetActive(true);
+                }
+                finished = true;
             }
         }
     }
@@ -48,11 +66,12 @@ public class Dialog : MonoBehaviour {
     {
         continueButton.SetActive(false);
 
-        if (index < sentences.Length - 1)
+        if (index < sentences.Length - 1 && finished == true)
         {
             index++;
             textDisplay.text = "";
             StartCoroutine(Type());
+            finished = false;
         }
         else
         {

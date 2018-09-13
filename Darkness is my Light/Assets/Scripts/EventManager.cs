@@ -46,7 +46,7 @@ namespace UnityStandardAssets.ImageEffects
 
         void HandleKeys()
         {
-            if (Input.anyKeyDown && Flowchart.Instance.awaken == false)
+            if (Input.anyKeyDown && TriggerFlowchart.Instance.awaken == false)
             {
                 if(awakenTrigger == false)
                 {
@@ -55,17 +55,17 @@ namespace UnityStandardAssets.ImageEffects
                     StartCoroutine("ChangeBool");
                 }
             }
-            if (Input.anyKeyDown && Flowchart.Instance.bedroomGetUp == false && Flowchart.Instance.awaken == true)
+            if (Input.anyKeyDown && TriggerFlowchart.Instance.bedroomGetUp == false && TriggerFlowchart.Instance.awaken == true)
             {
                 UIManager.Instance.StartCoroutine("Fading");
-                Flowchart.Instance.bedroomGetUp = true;
+                TriggerFlowchart.Instance.bedroomGetUp = true;
             }
         }
 
         IEnumerator ChangeBool()
         {
             yield return new WaitForSeconds(9);
-            Flowchart.Instance.awaken = true;
+            TriggerFlowchart.Instance.awaken = true;
             StopCoroutine("ChangeBool");
         }
 

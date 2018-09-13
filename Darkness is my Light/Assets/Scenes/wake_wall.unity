@@ -682,6 +682,20 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1398345630922428, guid: df06b5718bf8f3740afcfd6e4fa8e95a, type: 2}
+      propertyPath: m_Name
+      value: TriggerFlowchart
+      objectReference: {fileID: 0}
+    - target: {fileID: 114907835577046774, guid: df06b5718bf8f3740afcfd6e4fa8e95a,
+        type: 2}
+      propertyPath: awaken
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114907835577046774, guid: df06b5718bf8f3740afcfd6e4fa8e95a,
+        type: 2}
+      propertyPath: bedroomGetUp
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: df06b5718bf8f3740afcfd6e4fa8e95a, type: 2}
   m_IsPrefabParent: 0

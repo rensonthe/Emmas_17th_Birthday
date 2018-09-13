@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
 
     // Normal Movements Variables
     public float moveSpeed;
+    public bool clothed;
 
     private Animator myAnimator;
     private Vector2 playerMovement;
@@ -22,6 +23,10 @@ public class Player : MonoBehaviour
     void Start()
     {
         myAnimator = GetComponent<Animator>();
+        if (clothed)
+        {
+            myAnimator.SetLayerWeight(1, 1);
+        }
     }
 
     void Update()
@@ -48,5 +53,10 @@ public class Player : MonoBehaviour
     {
         myAnimator.SetFloat("inputX", input.x);
         myAnimator.SetFloat("inputY", input.y);
+    }
+
+    public void ChangeClothes()
+    {
+        myAnimator.SetLayerWeight(1, 1);
     }
 }

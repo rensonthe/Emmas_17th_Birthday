@@ -17,3 +17,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/upper_stairs.unity
     guid: e73c2dfaf35d6f148b8300d5141a633c
+  - enabled: 1
+    path: Assets/Scenes/down_stairs.unity
+    guid: 4e77afd52c7f0654aba41cd0761f46d0

@@ -38,7 +38,7 @@ public class InteractableObject : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (Input.GetKeyDown(KeyCode.E) && triggered == true && !used)
+        if (Input.GetKeyDown(KeyCode.E) && triggered == true && !used && Dialog.Instance.finished == true)
         {
             if (objectName == "lightSwitchBedroom")
             {
@@ -47,37 +47,71 @@ public class InteractableObject : MonoBehaviour {
                     lightmap.color = new Color(255, 255, 255, lightmap.color.a);
                 }
                 entity.SetActive(true);
-                Flowchart.Instance.bedroomLightsOn = true;
+                TriggerFlowchart.Instance.bedroomLightsOn = true;
+                Dialog.Instance.NextSentence();
             }
-            if (objectName == "glasses" && Flowchart.Instance.bedroomLightsOn == true)
+            if (objectName == "glasses" && TriggerFlowchart.Instance.bedroomLightsOn == true && Dialog.Instance.finished == true)
             {
                 entity.SetActive(false);
-                Flowchart.Instance.pickupGlasses = true;
+                TriggerFlowchart.Instance.pickupGlasses = true;
                 triggered = false;
                 used = true;
                 highlight.SetActive(false);
+                Dialog.Instance.NextSentence();
             }
-            if(objectName == "bathroom" && Flowchart.Instance.pickupGlasses == true)
+            if(objectName == "bathroom" && TriggerFlowchart.Instance.pickupGlasses == true && Dialog.Instance.finished == true)
             {
                 Player.Instance.moveSpeed = 0;
                 StartCoroutine("FadeCheck");
-                Flowchart.Instance.bathroomWashUp = true;
+                TriggerFlowchart.Instance.bathroomWashUp = true;
                 triggered = false;
                 used = true;
                 highlight.SetActive(false);
             }
-            if (objectName == "bedroomBottle" && Flowchart.Instance.bathroomWashUp == true)
+            if (objectName == "bedroomBottle" && TriggerFlowchart.Instance.bathroomWashUp == true && Dialog.Instance.finished == true)
             {
                 entity.SetActive(false);
-                Flowchart.Instance.bottleTaken = true;
+                TriggerFlowchart.Instance.bottleTaken = true;
                 triggered = false;
                 used = true;
                 highlight.SetActive(false);
+                Dialog.Instance.NextSentence();
             }
-            if (objectName == "bedroomExit" && Flowchart.Instance.bottleTaken == true)
+            if (objectName == "bedroomExit" && TriggerFlowchart.Instance.bottleTaken == true && Dialog.Instance.finished == true)
             {
                 UIManager.Instance.StartCoroutine("Fading");
-                Flowchart.Instance.exitBedroom = true;
+                TriggerFlowchart.Instance.exitBedroom = true;
+            }
+            if (objectName == "lightSwitchUS" && TriggerFlowchart.Instance.exitBedroom == true && Dialog.Instance.finished == true)
+            {
+                if (changeAlpha == true)
+                {
+                    lightmap.color = new Color(255, 255, 255, lightmap.color.a);
+                }
+                entity.SetActive(true);
+                TriggerFlowchart.Instance.bedroomLightsOn = true;
+                Dialog.Instance.NextSentence();
+            }
+            if (objectName == "boxes" && TriggerFlowchart.Instance.bedroomLightsOn == true && Dialog.Instance.finished == true)
+            {
+                TriggerFlowchart.Instance.boxes = true;
+                triggered = false;
+                used = true;
+                highlight.SetActive(false);
+                Dialog.Instance.NextSentence();
+            }
+            if (objectName == "other_door" && TriggerFlowchart.Instance.boxes == true && Dialog.Instance.finished == true)
+            {
+                TriggerFlowchart.Instance.otherDoor = true;
+                triggered = false;
+                used = true;
+                highlight.SetActive(false);
+                Dialog.Instance.NextSentence();
+            }
+            if (objectName == "downStairs" && TriggerFlowchart.Instance.otherDoor == true && Dialog.Instance.finished == true)
+            {
+                UIManager.Instance.StartCoroutine("Fading");
+                TriggerFlowchart.Instance.downStairs = true;
             }
         }
 
@@ -95,8 +129,10 @@ public class InteractableObject : MonoBehaviour {
     public IEnumerator FadeCheck()
     {
         Fade(true, 1);
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(5);
         Fade(false, 1);
+        Dialog.Instance.NextSentence();
+        Player.Instance.ChangeClothes();
         Player.Instance.moveSpeed = 3;
         StopCoroutine("FadeCheck");
     }
@@ -115,12 +151,12 @@ public class InteractableObject : MonoBehaviour {
 
     void OnTriggerStay2D(Collider2D other)
     {
-        if (other.tag == "Player" && stay)
+        if (other.tag == "Player" && stay && TriggerFlowchart.Instance.bedroomLightsOn == true)
         {
             triggered = true;
             if (changeAlpha == true)
             {
-                lightmap.color = new Color(255, 255, 255, 255);
+                lightmap.color = new Color(255, 255, 255, 1);
             }
         }
     }
@@ -130,7 +166,7 @@ public class InteractableObject : MonoBehaviour {
         if (other.tag == "Player")
         {
             triggered = false;
-            if (changeAlpha == true && stay)
+            if (changeAlpha == true && stay && TriggerFlowchart.Instance.bedroomLightsOn == true)
             {
                 lightmap.color = new Color(255, 255, 255, 0.5f);
             }
