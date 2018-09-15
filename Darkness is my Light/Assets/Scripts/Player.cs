@@ -14,6 +14,7 @@ public class Player : MonoBehaviour
 
     private Animator myAnimator;
     private Vector2 playerMovement;
+    private Transform self;
 
     private void Awake()
     {
@@ -22,6 +23,7 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        self = GetComponent<Transform>();
         myAnimator = GetComponent<Animator>();
         if (clothed)
         {
@@ -58,5 +60,20 @@ public class Player : MonoBehaviour
     public void ChangeClothes()
     {
         myAnimator.SetLayerWeight(1, 1);
+    }
+
+    public void ChangeScale()
+    {
+        self.transform.localScale += new Vector3(0.5f, 0.5f, 0);
+    }
+
+    public void SetActive()
+    {
+        moveSpeed = 3;
+    }
+
+    public void SetInactive()
+    {
+        moveSpeed = 0;
     }
 }

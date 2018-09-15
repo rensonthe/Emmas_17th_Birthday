@@ -15,6 +15,7 @@ public class Dialog : MonoBehaviour {
     public bool noAnim;
     public bool auto;
     public bool finished = false;
+    public bool dontStart = false;
 
     public GameObject continueButton;
     public Animator textDisplayAnim;
@@ -26,7 +27,10 @@ public class Dialog : MonoBehaviour {
 
     void Start()
     {
-        StartCoroutine(Type());
+        if(dontStart == false)
+        {
+            StartCoroutine(Type());
+        }
     }
 
     void Update()
@@ -68,6 +72,7 @@ public class Dialog : MonoBehaviour {
 
         if (index < sentences.Length - 1 && finished == true)
         {
+            Debug.Log("run");
             index++;
             textDisplay.text = "";
             StartCoroutine(Type());
@@ -75,6 +80,7 @@ public class Dialog : MonoBehaviour {
         }
         else
         {
+            Debug.Log("ran");
             textDisplay.text = "";
             continueButton.SetActive(false);
         }

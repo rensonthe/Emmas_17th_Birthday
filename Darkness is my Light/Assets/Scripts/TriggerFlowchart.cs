@@ -21,6 +21,9 @@ public class TriggerFlowchart : MonoBehaviour {
     public bool boxes = false;
     public bool otherDoor = false;
     public bool downStairs = false;
+    public bool eaten = false;
+    public bool drank = false;
+    public bool sat = false;
 
     // Use this for initialization
     void Start () {

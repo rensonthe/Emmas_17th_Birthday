@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/down_stairs.unity
+- path: Assets/Scenes/gameWorld/desktop 2.unity
   isLoaded: 1
   isActive: 1

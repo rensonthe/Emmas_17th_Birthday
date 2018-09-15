@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine.UI;
 using TMPro;
+using Fungus;
 using UnityEngine;
 
 namespace UnityStandardAssets.ImageEffects
 {
     public class EventManager : PostEffectsBase
     {
+        public Flowchart flowchart;
         public bool awakenEyes;
-        public bool bedroomNight;
         public GameObject dialog;
         public GameObject[] eyes;
         bool awakenTrigger = false;
@@ -23,10 +24,6 @@ namespace UnityStandardAssets.ImageEffects
         // Use this for initialization
         void Start()
         {
-            if (bedroomNight)
-            {
-                dialog.gameObject.SetActive(true);
-            }
             if (awakenEyes)
             {
                 eyes[0].gameObject.SetActive(true);
@@ -89,7 +86,7 @@ namespace UnityStandardAssets.ImageEffects
             yield return new WaitForSeconds(1.5f);
             eyes[2].gameObject.SetActive(false);
             yield return new WaitForSeconds(0.5f);
-            dialog.gameObject.SetActive(true);
+            flowchart.SendFungusMessage("1");
         }
     }
 }
