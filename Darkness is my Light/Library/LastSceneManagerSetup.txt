@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/Scenes/gameWorld/desktop 2.unity
+- path: Assets/Scenes/gameWorld/Act1.unity
   isLoaded: 1
   isActive: 1

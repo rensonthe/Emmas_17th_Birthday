@@ -31,7 +31,7 @@ public class UIManager : MonoBehaviour {
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("wake_wall");
+        SceneManager.LoadScene("down_stairs");
     }
 
     public IEnumerator Fading()

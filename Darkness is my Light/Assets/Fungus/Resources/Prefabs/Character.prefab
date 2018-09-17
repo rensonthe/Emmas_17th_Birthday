@@ -40,11 +40,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25fb867d2049d41f597aefdd6b19f598, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameText: LSTheNinjaKitten
+  nameText: Potato
   nameColor: {r: 1, g: 1, b: 1, a: 1}
   soundEffect: {fileID: 0}
   portraits:
-  - {fileID: 21300000, guid: 8364773ca91c89e40999ee93f8bbe8a9, type: 3}
+  - {fileID: 21300000, guid: fcfe50b9b871cba4896165f5716218a4, type: 3}
   portraitsFace: 0
   setSayDialog: {fileID: 0}
   description: 

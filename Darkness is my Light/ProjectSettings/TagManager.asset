@@ -7,6 +7,12 @@ TagManager:
   - Enemy
   - Laser
   - Panel
+  - Wall
+  - Edge
+  - EnemyBullet
+  - Bullet
+  - Melee
+  - EnemyMelee
   layers:
   - Default
   - TransparentFX
