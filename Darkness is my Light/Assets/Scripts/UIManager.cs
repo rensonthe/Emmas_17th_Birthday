@@ -31,13 +31,19 @@ public class UIManager : MonoBehaviour {
 
     public void PlayGame()
     {
-        SceneManager.LoadScene("down_stairs");
+        StartCoroutine("Fading");
     }
 
     public IEnumerator Fading()
     {
+        Debug.Log("run");
         animator.SetBool("Fade", true);
         yield return new WaitUntil(() => fadeImage.color.a == 1);
+        SceneManager.LoadScene(index);
+    }
+
+    public void ResetScene()
+    {
         SceneManager.LoadScene(index);
     }
 }

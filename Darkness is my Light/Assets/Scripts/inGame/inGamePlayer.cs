@@ -3,21 +3,38 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public delegate void DeadEventHandler();
+
 public class inGamePlayer : Character {
 
-    private static inGamePlayer instace;
+    private static inGamePlayer instance;
 
     public static inGamePlayer Instance
     {
         get
         {
-            if (instace == null)
+            if (instance == null)
             {
-                instace = FindObjectOfType<inGamePlayer>();
+                instance = FindObjectOfType<inGamePlayer>();
             }
-            return instace;
+            return instance;
         }
     }
+
+    public event DeadEventHandler Dead;
+
+    [SerializeField]
+    private Stat healthStat;
+
+    [SerializeField]
+    private Stat survivalStat;
+    [SerializeField]
+    private float hungerRate;
+
+    private float hungerTimer;
+    private bool canHunger;
+
+    public int currentStacks;
 
     [SerializeField]
     private Transform[] groundPoints;
@@ -31,6 +48,7 @@ public class inGamePlayer : Character {
     public bool OnGround { get; set; }
 
     private Vector2 startPos;
+    private bool canFlip = true;
 
     // Use this for initialization
     public override void Start () {
@@ -39,6 +57,9 @@ public class inGamePlayer : Character {
         startPos = transform.position;
 
         MyRigidbody = GetComponent<Rigidbody2D>();
+
+        healthStat.Initialize();
+        survivalStat.Initialize();
 	}
 	
 	// Update is called once per frame
@@ -61,6 +82,16 @@ public class inGamePlayer : Character {
             HandleMovement(horizontal);
 
             Flip(horizontal);
+
+            Hunger();
+        }
+    }
+
+    public void OnDead()
+    {
+        if(Dead != null)
+        {
+            Dead();
         }
     }
 
@@ -96,7 +127,7 @@ public class inGamePlayer : Character {
 
     private void Flip(float horizontal)
     {
-        if(horizontal > 0 && !facingRight || horizontal < 0 && facingRight)
+        if(horizontal > 0 && !facingRight && canFlip || horizontal < 0 && facingRight && canFlip)
         {
             ChangeDirection();
         }
@@ -122,9 +153,24 @@ public class inGamePlayer : Character {
         return false;
     }
 
+    private void Hunger()
+    {
+        hungerTimer += Time.deltaTime;
+
+        if(survivalStat.CurrentVal <= 1)
+        {
+            healthStat.CurrentVal--;
+        }
+        if (hungerTimer >= hungerRate)
+        {
+            survivalStat.CurrentVal--;
+            hungerTimer = 0;
+        }
+    }
+
     public override IEnumerator TakeDamage()
     {
-        health -= 10;
+        healthStat.CurrentVal -= 10;
 
         if (!IsDead)
         {
@@ -142,7 +188,32 @@ public class inGamePlayer : Character {
     {
         get
         {
-            return health <= 0;
+            if(healthStat.CurrentVal <= 0)
+            {
+                OnDead();
+            }
+
+            return healthStat.CurrentVal <= 0;
+        }
+    }
+
+    public override void Death()
+    {
+        UIManager.Instance.ResetScene();
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if(other.gameObject.tag == "Food")
+        {
+            Destroy(other.gameObject);
+            survivalStat.CurrentVal += 25;
+            healthStat.CurrentVal += 5;
+        }
+        if (other.gameObject.tag == "Shovel")
+        {
+            UIManager.Instance.StartCoroutine("Fading");
+            Destroy(other.gameObject);
         }
     }
 }

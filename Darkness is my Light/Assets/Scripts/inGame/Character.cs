@@ -6,8 +6,7 @@ public abstract class Character : MonoBehaviour {
 
     protected bool facingRight;
 
-    [SerializeField]
-    protected float movementSpeed;
+    public float movementSpeed;
 
     [SerializeField]
     protected int health;
@@ -18,6 +17,8 @@ public abstract class Character : MonoBehaviour {
     public bool TakingDamage { get; set; }
 
     public abstract bool IsDead { get; }
+
+    public abstract void Death();
 
     [SerializeField]
     private BoxCollider2D meleeCollider;
@@ -75,7 +76,7 @@ public abstract class Character : MonoBehaviour {
         }
         else
         {
-            GameObject tmp = Instantiate(bulletPrefab, bulletPos.position, Quaternion.identity);
+            GameObject tmp = Instantiate(bulletPrefab, bulletPos.position, Quaternion.Euler(new Vector3(0,0,180)));
             tmp.GetComponent<Bullet>().Initialize(Vector2.left);
         }
     }

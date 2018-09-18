@@ -40,16 +40,17 @@ public class MeleeState : IEnemyState
 
     private void Attack()
     {
-        if (enemy.MeleeTimer >= attackCooldown)
+        if (enemy.MeleeTimer >= attackCooldown && !canAttack)
         {
             canAttack = true;
             enemy.MeleeTimer = 0;
         }
 
-        if (canAttack && enemy.InMeleeRange)
+        if (canAttack == true && enemy.InMeleeRange)
         {
-            canAttack = false;
             enemy.MyAnimator.SetTrigger("attack");
+            canAttack = false;
+            enemy.MeleeTimer = 0;
         }
     }
 }

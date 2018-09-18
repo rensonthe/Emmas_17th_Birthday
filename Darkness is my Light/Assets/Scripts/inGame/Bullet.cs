@@ -37,4 +37,12 @@ public class Bullet : MonoBehaviour {
     {
         this.direction = direction;
     }
+
+    void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "Enemy" || other.tag == "Wall")
+        {
+            Destroy(gameObject);
+        }
+    }
 }

@@ -14,6 +14,8 @@ public class Enemy : Character {
 
     public GameObject Target { get; set; }
 
+    public GameObject Beans;
+
     [SerializeField]
     private float meleeRange;
     [SerializeField]
@@ -49,10 +51,16 @@ public class Enemy : Character {
 
     public float RangedTimer { get; set; }
 
+    [SerializeField]
+    private Transform leftEdge;
+    [SerializeField]
+    private Transform rightEdge;
+
     // Use this for initialization
     public override void Start () {
 
         base.Start();
+        inGamePlayer.Instance.Dead += new DeadEventHandler(RemoveTarget);
 
         ChangeState(new IdleState());
         SetState();
@@ -90,6 +98,11 @@ public class Enemy : Character {
         }
 	}
 
+    public void RemoveTarget()
+    {
+        Target = null;
+        ChangeState(new PatrolState());
+    }
 
     private void LookAtTarget()
     {
@@ -120,9 +133,16 @@ public class Enemy : Character {
     {
         if (!Attack)
         {
-            MyAnimator.SetFloat("speed", 1);
+            if ((GetDirection().x > 0 && transform.position.x < rightEdge.position.x) || (GetDirection().x < 0 && transform.position.x > leftEdge.position.x))
+            {
+                MyAnimator.SetFloat("speed", 1);
 
-            transform.Translate(GetDirection() * (movementSpeed * Time.deltaTime));
+                transform.Translate(GetDirection() * (movementSpeed * Time.deltaTime));
+            }
+            else if(currentState is PatrolState)
+            {
+                ChangeDirection();
+            }
         }
     }
 
@@ -137,6 +157,11 @@ public class Enemy : Character {
         currentState.OnTriggerEnter(other);
     }
 
+    public void SpawnBeans()
+    {
+        Instantiate(Beans, transform.position, Quaternion.identity);
+    }
+
     public override IEnumerator TakeDamage()
     {
         health -= 10;
@@ -146,7 +171,7 @@ public class Enemy : Character {
             MyAnimator.SetTrigger("damage");
         }
         else
-        {
+        {            
             MyAnimator.SetTrigger("die");
             yield return null;
         }
@@ -158,5 +183,10 @@ public class Enemy : Character {
         {
             return health <= 0;
         }
+    }
+
+    public override void Death()
+    {
+        Destroy(gameObject);
     }
 }

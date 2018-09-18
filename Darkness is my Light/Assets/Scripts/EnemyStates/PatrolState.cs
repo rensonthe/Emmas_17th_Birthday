@@ -5,11 +5,13 @@ using UnityEngine;
 public class PatrolState : IEnemyState
 {
     private Enemy enemy;
+
     private float patrolTimer;
-    private float patrolDuration = 8;
+    private float patrolDuration;
 
     public void Enter(Enemy enemy)
     {
+        patrolDuration = Random.Range(3.1f, 16.9f);
         this.enemy = enemy;
     }
 
@@ -19,7 +21,11 @@ public class PatrolState : IEnemyState
 
         enemy.Move();
 
-        if (enemy.Target != null && enemy.InShootRange)
+        if(enemy.Target != null)
+        {
+            enemy.ChangeState(new HuntState());
+        }
+        if (enemy.Target != null && enemy.InShootRange || enemy.Target != null && enemy.InMeleeRange)
         {
             enemy.SetState();
         }
@@ -32,9 +38,9 @@ public class PatrolState : IEnemyState
 
     public void OnTriggerEnter(Collider2D other)
     {
-        if(other.tag == "Edge")
+        if (other.tag == "Bullet")
         {
-            enemy.ChangeDirection();
+            enemy.Target = inGamePlayer.Instance.gameObject;
         }
     }
 
