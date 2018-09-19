@@ -23,6 +23,8 @@ public class inGamePlayer : Character {
 
     public event DeadEventHandler Dead;
 
+    public bool useBars;
+
     [SerializeField]
     private Stat healthStat;
 
@@ -58,8 +60,11 @@ public class inGamePlayer : Character {
 
         MyRigidbody = GetComponent<Rigidbody2D>();
 
-        healthStat.Initialize();
-        survivalStat.Initialize();
+        if (useBars == true)
+        {
+            healthStat.Initialize();
+            survivalStat.Initialize();
+        }
 	}
 	
 	// Update is called once per frame
@@ -83,7 +88,10 @@ public class inGamePlayer : Character {
 
             Flip(horizontal);
 
-            Hunger();
+            if(useBars == true)
+            {
+                Hunger();
+            }
         }
     }
 

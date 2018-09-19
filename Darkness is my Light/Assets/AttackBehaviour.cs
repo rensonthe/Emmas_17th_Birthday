@@ -12,7 +12,7 @@ public class AttackBehaviour : StateMachineBehaviour {
 
         if(animator.tag == "Player")
         {
-
+            AudioManager.instance.PlaySound2D("mak");
             if (inGamePlayer.Instance.OnGround)
             {
                 inGamePlayer.Instance.MyRigidbody.velocity = Vector2.zero;

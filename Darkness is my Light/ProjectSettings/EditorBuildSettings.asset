@@ -33,5 +33,20 @@ EditorBuildSettings:
     path: Assets/Scenes/gameWorld/Act1.unity
     guid: 02e65e2afff00f44a8aaba5d5986e03a
   - enabled: 1
-    path: Assets/Scenes/gameWorld/Act2.unity
-    guid: 71ec6cac6acffaa4da56ef65f3f54da9
+    path: Assets/Scenes/gameWorld/ActNarration.unity
+    guid: 4bbf942938718d54c9190b44f3fb245a
+  - enabled: 1
+    path: Assets/Scenes/gameWorld/orderArgue.unity
+    guid: 17166bb225459424cb0914df886f9f6b
+  - enabled: 1
+    path: Assets/Scenes/down_stairs_up.unity
+    guid: 39d1df35f56391d49a5e783b1b54916e
+  - enabled: 1
+    path: Assets/Scenes/bedroomSleep.unity
+    guid: be04e8a33a6d0644bb2d38aa2680aba1
+  - enabled: 1
+    path: Assets/Scenes/end_note.unity
+    guid: b781db693e06a184087884a03cc38177
+  - enabled: 1
+    path: Assets/Scenes/end_menu.unity
+    guid: eba19b1540266e343a9beff8caf302bf

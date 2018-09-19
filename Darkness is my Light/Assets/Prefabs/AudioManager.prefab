@@ -1,0 +1,97 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1223880320530692}
+  m_IsPrefabParent: 1
+--- !u!1 &1223880320530692
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4016245006348390}
+  - component: {fileID: 114690878868340760}
+  - component: {fileID: 114806997139217136}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4016245006348390
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1223880320530692}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114690878868340760
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1223880320530692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02a9a06b51e117940ad2ffe9be7c8597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114806997139217136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1223880320530692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7021aff9f5c28754d8d1c1fba536b9aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundGroups:
+  - groupID: door
+    group:
+    - {fileID: 8300000, guid: d4a5a64f291f7814fa213f931c0e2064, type: 3}
+  - groupID: lightSwitch
+    group:
+    - {fileID: 8300000, guid: 5791dc18abad62a4584e01778d9e61dd, type: 3}
+  - groupID: getup
+    group:
+    - {fileID: 8300000, guid: fc2fc1ea9767e974d834fb530f97577c, type: 3}
+  - groupID: teeth
+    group:
+    - {fileID: 8300000, guid: 54140f6f2aa746b458cf86ea6a5065ef, type: 3}
+  - groupID: sink
+    group:
+    - {fileID: 8300000, guid: 4b9ab96150d0ad34b88fb2f1e77db662, type: 3}
+  - groupID: clothes
+    group:
+    - {fileID: 8300000, guid: 27b49997c48aec242a22604471bba101, type: 3}
+  - groupID: zombie_hurt
+    group:
+    - {fileID: 8300000, guid: 0ffe458ca915e8747850c9cfee436d5a, type: 3}
+    - {fileID: 8300000, guid: 8e3876e98ded8fa4da43dff14b50625b, type: 3}
+  - groupID: zombie_death
+    group:
+    - {fileID: 8300000, guid: a436002ba65fa984f834d5233a75529f, type: 3}
+  - groupID: player_death
+    group:
+    - {fileID: 8300000, guid: 0d5f683ac1184b946b2228e8fed1c6e6, type: 3}
+  - groupID: mak
+    group:
+    - {fileID: 8300000, guid: 088e46f8572570b48827fb71cc886f36, type: 3}

@@ -165,7 +165,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 10
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -187,7 +187,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 8407913}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 746.2, y: 1.94, z: -10}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -6984,6 +6984,7 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1308064882702384, guid: 4db61f323117c7647b070364b5c9c4cb,
     type: 2}
   bulletPos: {fileID: 2016505114}
+  useBars: 0
   healthStat:
     bar: {fileID: 2003168156}
     maxVal: 50
@@ -11473,11 +11474,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4898631926279320, guid: b52953db98a2c39468cb9983bee9917a, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 746.2
+      value: -7.66
       objectReference: {fileID: 0}
     - target: {fileID: 4898631926279320, guid: b52953db98a2c39468cb9983bee9917a, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -2.48
+      value: -2.47
       objectReference: {fileID: 0}
     - target: {fileID: 4898631926279320, guid: b52953db98a2c39468cb9983bee9917a, type: 2}
       propertyPath: m_LocalPosition.z
@@ -11515,6 +11516,11 @@ Prefab:
       objectReference: {fileID: 1395426019}
     - target: {fileID: 1941309044921936, guid: b52953db98a2c39468cb9983bee9917a, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114423740502650780, guid: b52953db98a2c39468cb9983bee9917a,
+        type: 2}
+      propertyPath: useBars
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -12208,7 +12214,7 @@ Prefab:
     - target: {fileID: 114291697864201430, guid: d6035110632b12d46984557eba2cdb24,
         type: 2}
       propertyPath: levelName
-      value: Act2
+      value: ActNarration
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d6035110632b12d46984557eba2cdb24, type: 2}
@@ -12455,7 +12461,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1990869457}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 746.2, y: -2.48, z: -10}
+  m_LocalPosition: {x: -7.66, y: -2.47, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1658781383}

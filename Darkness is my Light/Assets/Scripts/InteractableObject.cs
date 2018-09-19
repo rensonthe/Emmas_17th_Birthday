@@ -49,7 +49,8 @@ public class InteractableObject : MonoBehaviour {
         {
             if (objectName == "lightSwitchBedroom")
             {
-                if(changeAlpha == true)
+                AudioManager.instance.PlaySound2D("lightSwitch");
+                if (changeAlpha == true)
                 {
                     lightmap.color = new Color(255, 255, 255, lightmap.color.a);
                 }
@@ -86,11 +87,13 @@ public class InteractableObject : MonoBehaviour {
             }
             if (objectName == "bedroomExit" && TriggerFlowchart.Instance.bottleTaken == true)
             {
+                AudioManager.instance.PlaySound2D("door");
                 UIManager.Instance.StartCoroutine("Fading");
                 TriggerFlowchart.Instance.exitBedroom = true;
             }
             if (objectName == "lightSwitchUS" && TriggerFlowchart.Instance.exitBedroom == true)
             {
+                AudioManager.instance.PlaySound2D("lightSwitch");
                 if (changeAlpha == true)
                 {
                     lightmap.color = new Color(255, 255, 255, lightmap.color.a);
@@ -121,6 +124,7 @@ public class InteractableObject : MonoBehaviour {
             }
             if (objectName == "lightSwitchDS" && TriggerFlowchart.Instance.downStairs == true)
             {
+                AudioManager.instance.PlaySound2D("lightSwitch");
                 if (changeAlpha == true)
                 {
                     lightmap.color = new Color(255, 255, 255, lightmap.color.a);
@@ -150,6 +154,52 @@ public class InteractableObject : MonoBehaviour {
                 UIManager.Instance.StartCoroutine("Fading");
                 TriggerFlowchart.Instance.sat = true;
             }
+            if (objectName == "upBottle" && TriggerFlowchart.Instance.downStairs == true)
+            {
+                entity.SetActive(false);
+                TriggerFlowchart.Instance.bottleTaken = true;
+                triggered = false;
+                used = true;
+                highlight.SetActive(false);
+                flowchart.SendFungusMessage("1");
+            }
+            if (objectName == "upSleep" && TriggerFlowchart.Instance.bottleTaken == true)
+            {
+                UIManager.Instance.StartCoroutine("Fading");
+                TriggerFlowchart.Instance.downStairs = true;
+            }
+            if (objectName == "sleepBottle" && TriggerFlowchart.Instance.bedroomGetUp == true)
+            {
+                TriggerFlowchart.Instance.bottleTaken = true;
+                entity.SetActive(true);
+                highlight.SetActive(false);
+                triggered = false;
+                used = true;
+                flowchart.SendFungusMessage("1");
+            }
+            if (objectName == "sleepGlasses" && TriggerFlowchart.Instance.bottleTaken == true)
+            {
+                TriggerFlowchart.Instance.pickupGlasses = true;
+                entity.SetActive(true);
+                highlight.SetActive(false);
+                triggered = false;
+                used = true;
+                flowchart.SendFungusMessage("2");
+            }
+            if (objectName == "sleepBathroom" && TriggerFlowchart.Instance.pickupGlasses == true)
+            {
+                Player.Instance.moveSpeed = 0;
+                StartCoroutine("FadeCheck");
+                TriggerFlowchart.Instance.bathroomWashUp = true;
+                triggered = false;
+                used = true;
+                highlight.SetActive(false);
+            }
+            if (objectName == "sleep" && TriggerFlowchart.Instance.bathroomWashUp == true)
+            {
+                UIManager.Instance.StartCoroutine("Fading");
+                TriggerFlowchart.Instance.sat = true;
+            }
         }
 
         if (!isInTransition)
@@ -166,7 +216,12 @@ public class InteractableObject : MonoBehaviour {
     public IEnumerator FadeCheck()
     {
         Fade(true, 1);
-        yield return new WaitForSeconds(5);
+        AudioManager.instance.PlaySound2D("sink");
+        yield return new WaitForSeconds(6);
+        AudioManager.instance.PlaySound2D("teeth");
+        yield return new WaitForSeconds(6);
+        AudioManager.instance.PlaySound2D("clothes");
+        yield return new WaitForSeconds(3);
         Fade(false, 1);
         Player.Instance.ChangeClothes();
         flowchart.SendFungusMessage("3");

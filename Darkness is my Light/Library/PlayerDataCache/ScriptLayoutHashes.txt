@@ -140,7 +140,7 @@ cc897e31f90a455da1ad6fffc97043f1 Assembly-CSharp-firstpass.dll:UnityStandardAsse
 b8cc663a36e2da57925e944db922b3b9 Assembly-CSharp.dll:Fungus.Flowchart
 765037da3d8faeee91e39d672b924c61 Assembly-CSharp.dll:.EnvMapAnimator
 3d4501935c82b1ad586cc7811d1f8ed2 Assembly-CSharp.dll:Fungus.Trigger2D
-ac63b4bc92902e984db785eb85da6fda Assembly-CSharp.dll:.Player
+6581ee3d674a6832456ef20011c3552f Assembly-CSharp.dll:.Player
 a32f33d00a7a1fe2bf4c764c4b02d30d Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.BloomAndFlares
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationPlayableAsset
 970a95104359198fe1a98ef48655de8c UnityEngine.Timeline.dll:UnityEngine.Timeline.ActivationTrack
@@ -323,6 +323,7 @@ b11448bc44f49db3e26525de9acc4a98 TextMeshPro-2017.2-Editor.dll:TMPro.EditorUtili
 5e6d45a991f8b0a32a316d0a266ae47b Assembly-CSharp.dll:Fungus.Inv
 cac5093fb1baf037bd671ecbc6727828 Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.ScreenOverlay
 253aa7c97d0743cc9b91d5116db69272 Assembly-CSharp.dll:Cinemachine.CinemachineDollyCart
+88260bded81072a70f893b9574ce3869 Assembly-CSharp.dll:.MusicManager
 c3b726e1ef77ecefcf78c4586a6bf32e Assembly-CSharp.dll:Cinemachine.CinemachineTrackedDolly
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:TMPro.Examples.TeleType
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Fungus.Examples.SpriteColorChangeFromFungusMouseEvent
@@ -393,6 +394,7 @@ d9ae8c6401801a4a88651871144fd209 Assembly-CSharp.dll:Cinemachine.CinemachineBlen
 09e8b19b081bce7b2bf8fe298c6efc44 Assembly-CSharp.dll:Fungus.Clamp
 383e2a3e1f71269581c2f6dec83b3b72 Assembly-CSharp.dll:Fungus.WaitFrames
 959d0fff5e452c20f305e0bfe3cf69de Assembly-CSharp.dll:Fungus.TransformChanged
+a23889e127ca0721e16cdbacef762a9d Assembly-CSharp.dll:.SoundLibrary
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Fungus.SelectOnEnable
 76f3454fd858ca9749a9b7152f3017b1 Assembly-CSharp.dll:Cinemachine.CinemachineMixingCamera
 b3c9beb028b133accef80292fa4e97a1 Assembly-CSharp.dll:Fungus.SetSayDialog
@@ -422,7 +424,8 @@ e0f7ffd5d5c2abe4b2e16569a21163da UnityEngine.GoogleAudioSpatializer.dll:UnityEng
 abb921b4ef874b7b5b817e54014be6c9 Assembly-CSharp.dll:Fungus.If
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:Fungus.SceneLoader
 00566559aaf2ba51543e32371603951b Assembly-CSharp-firstpass.dll:UnityStandardAssets.ImageEffects.NoiseAndGrain
-b2252b9a2cc3c923c7750ee583bc33e4 Assembly-CSharp.dll:.inGamePlayer
+05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.AudioManager
+57a37ec6483fc3b1045198442c60b445 Assembly-CSharp.dll:.inGamePlayer
 89d4e43e5295d3eea0a5c6829fcca293 Assembly-CSharp.dll:Fungus.SetText
 f0f0ab6b8a39d0572cfa4ea315d84fbf Assembly-CSharp.dll:TMPro.Examples.Benchmark04
 0fcbcbd9afa80c74caef99e7ba749bb0 Assembly-CSharp.dll:Cinemachine.CinemachineCollider

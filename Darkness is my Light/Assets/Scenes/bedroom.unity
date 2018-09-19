@@ -518,9 +518,8 @@ MonoBehaviour:
     width: 1114
     height: 859
   selectedBlocks:
-  - {fileID: 302616945}
-  selectedCommands:
-  - {fileID: 302616964}
+  - {fileID: 302616955}
+  selectedCommands: []
   variables:
   - {fileID: 302616963}
   description: 
@@ -1723,6 +1722,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7c32ec3308619e6459aaf71d16fdc98f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  reverse: 0
   moveSpeed: 3
   clothed: 0
 --- !u!50 &789431734

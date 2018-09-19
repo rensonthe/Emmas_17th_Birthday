@@ -54,6 +54,7 @@ namespace UnityStandardAssets.ImageEffects
             }
             if (Input.anyKeyDown && TriggerFlowchart.Instance.bedroomGetUp == false && TriggerFlowchart.Instance.awaken == true)
             {
+                AudioManager.instance.PlaySound2D("getup");
                 UIManager.Instance.StartCoroutine("Fading");
                 TriggerFlowchart.Instance.bedroomGetUp = true;
             }

@@ -7,6 +7,7 @@ public class Player : MonoBehaviour
     public static Player Instance { get; set; }
 
     private bool canInteract = true;
+    public bool reverse = false;
 
     // Normal Movements Variables
     public float moveSpeed;
@@ -59,12 +60,26 @@ public class Player : MonoBehaviour
 
     public void ChangeClothes()
     {
-        myAnimator.SetLayerWeight(1, 1);
+        if (!reverse)
+        {
+            myAnimator.SetLayerWeight(1, 1);
+        }
+        else
+        {
+            myAnimator.SetLayerWeight(1, 0);
+        }
     }
 
     public void ChangeScale()
     {
-        self.transform.localScale += new Vector3(0.5f, 0.5f, 0);
+        if (!reverse)
+        {
+            self.transform.localScale += new Vector3(0.5f, 0.5f, 0);
+        }
+        else
+        {
+            self.transform.localScale -= new Vector3(0.5f, 0.5f, 0);
+        }
     }
 
     public void SetActive()

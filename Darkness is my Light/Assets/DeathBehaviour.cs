@@ -11,8 +11,16 @@ public class DeathBehaviour : StateMachineBehaviour {
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         inGamePlayer.Instance.currentStacks++;
+        if (animator.tag == "Enemy")
+        {
+            AudioManager.instance.PlaySound2D("zombie_death");
+        }
+        else if(animator.tag == "Player")
+        {
+            AudioManager.instance.PlaySound2D("player_death");
+        }
 
-        if(inGamePlayer.Instance.currentStacks == 5)
+        if (inGamePlayer.Instance.currentStacks == 5)
         {
             animator.GetComponent<Enemy>().SpawnBeans();
             inGamePlayer.Instance.currentStacks = 0;
